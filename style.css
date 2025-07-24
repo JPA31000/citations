@@ -1,0 +1,68 @@
+/* Style pour centrer la citation au milieu de la page */
+body {
+    /* Utilisation de Flexbox pour un centrage parfait */
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;   /* Centre verticalement */
+    min-height: 100vh;     /* Assure que le body prend toute la hauteur de l'écran */
+    
+    /* Styles esthétiques */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box; /* Inclut le padding dans la taille totale */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+}
+
+/* Le conteneur principal de notre citation */
+.quote-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 90%; /* S'adapte à la largeur de l'écran */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #007BFF;
+    text-align: left;
+    
+    /* Animation d'apparition */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Le texte de la citation */
+#quote-text {
+    font-size: 1.4em;
+    font-style: italic;
+    font-weight: 300;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* L'auteur de la citation */
+#quote-author {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #007BFF;
+}
+
+/* Guillemets décoratifs */
+#quote-text::before {
+    content: '“';
+    font-size: 2em;
+    color: #007bff4d;
+    font-weight: 600;
+    margin-right: 5px;
+}
