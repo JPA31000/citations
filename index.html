@@ -14,45 +14,45 @@
             justify-content: center;
             align-items: center;
             margin: 0;
-            padding: 0; /* Pas de padding pour un conteneur minimal */
+            padding: 0; 
             font-family: 'Poppins', sans-serif;
-            background-color: transparent; /* Fond transparent */
+            background-color: transparent;
         }
 
-        /* Conteneur de la citation, rendu minimaliste et transparent */
+        /* Conteneur de la citation */
         .quote-container {
-            background-color: transparent; /* Fond complètement transparent */
-            max-width: 500px; /* Largeur maximale pour la lisibilité */
+            background-color: transparent;
+            max-width: 600px; /* Largeur augmentée pour la nouvelle taille de police */
             width: 100%;
             text-align: left;
         }
 
         /* Texte de la citation */
         #quote-text {
-            /* Une taille de 11px est un bon équivalent web pour une taille 8pt de Word */
-            font-size: 11px; 
+            /* Taille 16px, équivalent web pour une taille 12pt de Word */
+            font-size: 16px; 
             font-style: italic;
             font-weight: 300;
-            color: #2c3e50; /* Couleur de texte sombre pour une bonne lisibilité */
+            color: #2c3e50;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         
-        /* Guillemet décoratif ajusté à la taille du texte */
+        /* Guillemet décoratif */
         #quote-text::before {
             content: '“';
-            font-size: 1.5em; /* Taille relative au texte de la citation */
-            color: rgba(0, 0, 0, 0.2); /* Couleur discrète */
+            font-size: 1.5em;
+            color: rgba(0, 0, 0, 0.2);
             font-weight: 600;
-            margin-right: 3px;
+            margin-right: 5px;
         }
 
         /* Auteur de la citation */
         #quote-author {
             display: block;
             text-align: right;
-            margin-top: 8px;
-            font-size: 10px; /* Légèrement plus petit que la citation */
+            margin-top: 10px;
+            font-size: 15px; /* Taille proportionnelle */
             font-weight: 600;
             color: #333;
         }
