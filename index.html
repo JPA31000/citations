@@ -3,22 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phrase de la Semaine</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Citation de la Semaine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* Style pour le conteneur principal */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0; /* Pas de padding pour un conteneur minimal */
+            font-family: 'Poppins', sans-serif;
+            background-color: transparent; /* Fond transparent */
+        }
+
+        /* Conteneur de la citation, rendu minimaliste et transparent */
+        .quote-container {
+            background-color: transparent; /* Fond complètement transparent */
+            max-width: 500px; /* Largeur maximale pour la lisibilité */
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Texte de la citation */
+        #quote-text {
+            /* Une taille de 11px est un bon équivalent web pour une taille 8pt de Word */
+            font-size: 11px; 
+            font-style: italic;
+            font-weight: 300;
+            color: #2c3e50; /* Couleur de texte sombre pour une bonne lisibilité */
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        /* Guillemet décoratif ajusté à la taille du texte */
+        #quote-text::before {
+            content: '“';
+            font-size: 1.5em; /* Taille relative au texte de la citation */
+            color: rgba(0, 0, 0, 0.2); /* Couleur discrète */
+            font-weight: 600;
+            margin-right: 3px;
+        }
+
+        /* Auteur de la citation */
+        #quote-author {
+            display: block;
+            text-align: right;
+            margin-top: 8px;
+            font-size: 10px; /* Légèrement plus petit que la citation */
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
     <div class="quote-container">
         <blockquote id="quote-text">
-            </blockquote>
+        </blockquote>
         <cite id="quote-author">
-            </cite>
+        </cite>
     </div>
 
-    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quotes = [
+                { text: "Choisissez un travail que vous aimez et vous n'aurez pas à travailler un seul jour de votre vie.", author: "Confucius" },
+                { text: "Fais de ta vie un rêve, et d'un rêve, une réalité.", author: "Antoine de Saint-Exupéry" },
+                { text: "C'est par le travail que l'homme se transforme.", author: "Victor Hugo" },
+                { text: "La seule façon de faire du bon travail est d'aimer ce que vous faites.", author: "Steve Jobs" },
+                { text: "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles.", author: "Sénèque" },
+                { text: "Le futur appartient à ceux qui croient à la beauté de leurs rêves.", author: "Eleanor Roosevelt" },
+                { text: "La créativité est l'intelligence qui s'amuse.", author: "Albert Einstein" },
+                { text: "On ne subit pas l'avenir, on le fait.", author: "Georges Bernanos" }
+            ];
+
+            function getWeekNumber(d) {
+                d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+                const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+                return weekNo;
+            }
+
+            function getWeeklyQuote() {
+                const weekNumber = getWeekNumber(new Date());
+                const quoteIndex = weekNumber % quotes.length;
+                return quotes[quoteIndex];
+            }
+
+            function displayQuote() {
+                const weeklyQuote = getWeeklyQuote();
+                const quoteTextElement = document.getElementById('quote-text');
+                const quoteAuthorElement = document.getElementById('quote-author');
+
+                if (quoteTextElement && quoteAuthorElement) {
+                    quoteTextElement.textContent = weeklyQuote.text;
+                    quoteAuthorElement.textContent = `— ${weeklyQuote.author}`;
+                }
+            }
+
+            displayQuote();
+        });
+    </script>
 
 </body>
 </html>
